@@ -1,7 +1,27 @@
-export default function TaskList(){
-    return(
-        <div>
-            <h1>TASK LIST</h1>
-        </div>
+import { useContext } from "react"
+import { GlobalContext } from "../context/GlobalContext"
+import TaskRow from "../components/TaskRow.jsx"
+
+export default function TaskList() {
+    const { tasks } = useContext(GlobalContext)
+
+    return (
+        <table>
+            <thead>
+                <th>Nome</th>
+                <th>Stato</th>
+                <th>Data di Creazione</th>
+
+            </thead>
+            <tbody>
+                {tasks.map((task) => {
+                    return (
+                        <TaskRow key={task.id} task = {task} /> 
+                )
+                })}
+
+
+            </tbody>
+        </table>
     )
 }
