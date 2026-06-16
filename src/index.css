@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* STILE DELLA NAVBAR */
+nav a {
+  display: inline-block;
+  margin-right: 15px;    
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: brown;
+}
+
+nav a:last-child {
+  margin-right: 0;
+}
