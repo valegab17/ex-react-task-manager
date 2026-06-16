@@ -8,9 +8,12 @@ export default function TaskList() {
     return (
         <table>
             <thead>
+                <tr>
+
                 <th>Nome</th>
                 <th>Stato</th>
                 <th>Data di Creazione</th>
+                </tr>
 
             </thead>
             <tbody>
