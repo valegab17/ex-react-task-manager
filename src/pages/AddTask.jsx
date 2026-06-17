@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react"
-
+import useTasks from "../hooks/useTasks";
 
 export default function AddTask() {
+    const { addTask } = useTasks();
     const [title, setTitle] = useState("");
     const [errMsg, setErrMsg] = useState("");
     const descriptionRef = useRef(null);
@@ -9,7 +10,7 @@ export default function AddTask() {
     const symbols = "!@#$%^&*()-_=+[]{}|;:'\\,.<>?/`~";
 
     //mi creo la mia funzione handleSubmit
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         //blocco il caricamento della pagina
         e.preventDefault();
         //resetto il messaggio di errore a ogni invio
@@ -35,6 +36,19 @@ export default function AddTask() {
             title: title,
             description: descriptionRef.current.value,
             status: statusRef.current.value
+        };
+
+
+        try {
+            await addTask(taskObj);
+            
+            alert("Task aggiunta con successo!");
+            
+            setTitle("");
+            descriptionRef.current.value = "";
+            statusRef.current.value = "To do";
+        } catch (err) {
+            alert(err.message);
         }
         console.log("Nuovo task", taskObj);
 
@@ -59,7 +73,7 @@ export default function AddTask() {
             </div>
         <div className="task-state">
         <label>STATO :</label>
-        <select ref={statusRef} defaultValue={"Seleziona lo stato"}>
+        <select ref={statusRef} defaultValue={"o do"}>
             <option value="To do">To do </option>
             <option value="Doing">Doing</option>
             <option value="Done">Done</option>

@@ -19,11 +19,39 @@ export default function useTasks() {
             }
         }
         fetchTasks();
-    },  []);
+    }, []);
 
     //definisco le tre funzioni vuote richieste dalla milestone 4 
-    const addTask = () => {};
-    const removeTask = () => {};
-    const updateTask = () => {};
-    return {tasks, addTask, removeTask,updateTask}
+    const addTask = async (newTask) => {
+        try {
+            //FETCH DI POST 
+            const res = await fetch(`${apiUrl}/tasks`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(newTask)
+            });
+
+            
+
+            //ora converto la risposta in notazione JSON
+            const data = await res.json();
+
+            //facciamo il controllo sulla funzione
+            if ( data.success){
+                setTasks((prevTasks) => [...prevTasks, data.task]);
+            } else{
+                throw new Error(data.message)
+            }
+
+        } catch (err) {
+            //error handling
+            console.error("Errore nel fetch", err)
+            throw err;
+        }
+    };
+    const removeTask = () => { };
+    const updateTask = () => { };
+    return { tasks, addTask, removeTask, updateTask }
 }
