@@ -62,8 +62,7 @@ export default function AddTask() {
             <input
                 type="text"
                 value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                /> {/* se c'è un errore lo controlliamo con lo state di errMsg mostrandolo sotto*/}
+                onChange={(e) => setTitle(e.target.value)}/> {/* se c'è un errore lo controlliamo con lo state di errMsg mostrandolo sotto*/}
                 {errMsg && <p style={{ color: 'red' }}> {errMsg}</p>}
             </div>
 
@@ -73,7 +72,7 @@ export default function AddTask() {
             </div>
         <div className="task-state">
         <label>STATO :</label>
-        <select ref={statusRef} defaultValue={"o do"}>
+        <select ref={statusRef} defaultValue={"To do"}>
             <option value="To do">To do </option>
             <option value="Doing">Doing</option>
             <option value="Done">Done</option>

@@ -4,6 +4,7 @@ import TaskList from "./pages/TaskList"
 import Navbar from "./components/Navbar"
 import GlobalContextProvider from "./context/GlobalContext"
 import Homepage from "./pages/Homepage"
+import TaskDetail from "./pages/TaskDetail"
 function App() {
 
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route element={<Homepage />} path="/" />
           <Route element={<TaskList />} path="/task-list" />
+          <Route element={<TaskDetail/>} path="/task/:id"/>
           <Route element={<AddTask />} path="/add-task" />
         </Routes>
 

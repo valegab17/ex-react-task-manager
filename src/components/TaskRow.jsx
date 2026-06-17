@@ -1,4 +1,5 @@
 import { memo } from "react"
+import { Link } from "react-router-dom";
 
 function TaskRow({ task }) {
 
@@ -9,7 +10,7 @@ function TaskRow({ task }) {
     };
     return (
         <tr>
-            <td> {task.title} </td>
+            <td> <Link to={`/task/${task.id}`}> {task.title}</Link></td>
             <td style={{ backgroundColor: statusColors[task.status] }}> {task.status} </td>
             <td>  {new Date(task.createdAt).toLocaleDateString('it-IT')} <br></br>
                 {new Date(task.createdAt).toLocaleString('it-IT', { hour: '2-digit', minute: '2-digit' })} </td>
