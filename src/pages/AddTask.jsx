@@ -1,8 +1,8 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useContext } from "react"
 import useTasks from "../hooks/useTasks";
-
+import { GlobalContext } from "../context/GlobalContext";
 export default function AddTask() {
-    const { addTask } = useTasks();
+    const { addTask } = useContext(GlobalContext);
     const [title, setTitle] = useState("");
     const [errMsg, setErrMsg] = useState("");
     const descriptionRef = useRef(null);
@@ -41,9 +41,9 @@ export default function AddTask() {
 
         try {
             await addTask(taskObj);
-            
+
             alert("Task aggiunta con successo!");
-            
+
             setTitle("");
             descriptionRef.current.value = "";
             statusRef.current.value = "To do";
@@ -58,11 +58,11 @@ export default function AddTask() {
         <form onSubmit={handleSubmit}>
             <div className="task-title">
 
-            <label> NOME DELLA TUA TASK: </label>
-            <input
-                type="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}/> {/* se c'è un errore lo controlliamo con lo state di errMsg mostrandolo sotto*/}
+                <label> NOME DELLA TUA TASK: </label>
+                <input
+                    type="text"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)} /> {/* se c'è un errore lo controlliamo con lo state di errMsg mostrandolo sotto*/}
                 {errMsg && <p style={{ color: 'red' }}> {errMsg}</p>}
             </div>
 
@@ -70,15 +70,15 @@ export default function AddTask() {
                 <label> DESCRIZIONE: </label>
                 <textarea ref={descriptionRef} />
             </div>
-        <div className="task-state">
-        <label>STATO :</label>
-        <select ref={statusRef} defaultValue={"To do"}>
-            <option value="To do">To do </option>
-            <option value="Doing">Doing</option>
-            <option value="Done">Done</option>
-        </select>
-        </div>
-        <button type="submit" className="submit-btn">Aggiungi Task</button>
+            <div className="task-state">
+                <label>STATO :</label>
+                <select ref={statusRef} defaultValue={"To do"}>
+                    <option value="To do">To do </option>
+                    <option value="Doing">Doing</option>
+                    <option value="Done">Done</option>
+                </select>
+            </div>
+            <button type="submit" className="submit-btn">Aggiungi Task</button>
 
         </form>
 

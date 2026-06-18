@@ -1,8 +1,8 @@
-import { useParams } from "react-router-dom"
+import { useContext, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom"
 import useTasks from "../hooks/useTasks";
 import { GlobalContext } from "../context/GlobalContext";
-import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import Modal from "../components/Modal";
 export default function TaskDetail() {
     const { id } = useParams();
     const { tasks, removeTask } = useContext(GlobalContext);
@@ -23,6 +23,10 @@ export default function TaskDetail() {
         }
     }
 
+    //setup della mia Modal
+    //variabile di stato, che valore ha all'inizio la modal? 
+    const [isOpen, setIsOpen] = useState(false)
+
     return (
         <>
             <h1>{currentTask && currentTask.title}</h1>
@@ -35,6 +39,16 @@ export default function TaskDetail() {
             <button onClick={() => handleDelete()}>
                 Elimina Task
             </button>
+            <button onClick={() => setIsOpen(true)}>
+                Elimina Task con la Modale
+            </button>
+            <Modal
+                show={isOpen}
+            onClose= {() => setIsOpen(false)}
+            onConfirm= {handleDelete}
+            title= "Elimina la task"
+            content= "Sei sicuro di voler eliminare questa task? Non potrai più tornare indietro."
+            />
         </>
 
     )

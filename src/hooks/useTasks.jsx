@@ -37,6 +37,7 @@ export default function useTasks() {
 
             //ora converto la risposta in notazione JSON
             const data = await res.json();
+            console.log("Cosa mi risponde il server quando aggiungo?", data);
 
             //facciamo il controllo sulla funzione
             if (data.success) {
@@ -60,7 +61,7 @@ export default function useTasks() {
             const data = await res.json();
 
             if(data.success){
-                setTasks((prevTasks) => prevTasks.filter(t => t.id !== taskId))
+                setTasks((prevTasks) => prevTasks.filter(t => t.id != taskId))
             } else{
                 throw new Error ( data.message)
             }
