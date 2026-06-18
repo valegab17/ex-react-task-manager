@@ -33,15 +33,15 @@ export default function useTasks() {
                 body: JSON.stringify(newTask)
             });
 
-            
+
 
             //ora converto la risposta in notazione JSON
             const data = await res.json();
 
             //facciamo il controllo sulla funzione
-            if ( data.success){
+            if (data.success) {
                 setTasks((prevTasks) => [...prevTasks, data.task]);
-            } else{
+            } else {
                 throw new Error(data.message)
             }
 
@@ -51,7 +51,26 @@ export default function useTasks() {
             throw err;
         }
     };
-    const removeTask = () => { };
+    const removeTask = async (taskId) => {
+        try {
+            //fetch di DELETE
+            const res = await fetch(`${apiUrl}/tasks/${taskId}`, {
+                method: "DELETE",
+            });
+            const data = await res.json();
+
+            if(data.success){
+                setTasks((prevTasks) => prevTasks.filter(t => t.id !== taskId))
+            } else{
+                throw new Error ( data.message)
+            }
+
+        } catch(err){
+            console.error("Errore nella eliminazione", err);
+            throw err;
+            
+        } /* console.log("Risposta del server alla DELETE:", data); */
+    };
     const updateTask = () => { };
     return { tasks, addTask, removeTask, updateTask }
 }
