@@ -39,25 +39,36 @@ export default function TaskList() {
     }, [tasks, sortBy, sortOrder])
 
     return (
-        <table>
-            <thead>
-                <tr >
+        <>
 
-                    <th onClick={() => handleSort("title")}>Nome</th>
-                    <th onClick={() => handleSort("status")}>Stato</th>
-                    <th onClick={() => handleSort("createdAt")}>Data di Creazione</th>
-                </tr>
+            <div className="t-title"> <h1>MEOW-LIST</h1></div>
+            <div className="table-container">
+                <table className="task-table">
+                    <thead>
+                        <tr >
 
-            </thead>
-            <tbody>
-                {sortedTasks.map((task) => {
-                    return (
-                        <TaskRow key={task.id} task={task} />
-                    )
-                })}
+                            <th onClick={() => handleSort("title")}>Nome</th>
+                            <th onClick={() => handleSort("status")}>Stato</th>
+                            <th onClick={() => handleSort("createdAt")}>Data di Creazione</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        {sortedTasks.map((task) => {
+                            return (
+                                <TaskRow key={task.id} task={task} />
+                            )
+                        })}
 
 
-            </tbody>
-        </table>
+                    </tbody>
+                </table>
+
+            </div>
+        </>
     )
+
+
+
+
 }

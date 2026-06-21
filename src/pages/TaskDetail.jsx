@@ -8,7 +8,7 @@ import EditTaskModal from "../components/EditTaskModal";
 
 export default function TaskDetail() {
     const { id } = useParams();
-    const { tasks, removeTask , updateTask} = useContext(GlobalContext);
+    const { tasks, removeTask, updateTask } = useContext(GlobalContext);
     //cerco con il find la task specifica
     const currentTask = tasks.find(t => t.id == id);
     //mi faccio una var navigate per reinderizzare il delete
@@ -48,34 +48,36 @@ export default function TaskDetail() {
     return (
         <>
             <h1>{currentTask && currentTask.title}</h1>
-            <p>{currentTask && currentTask.description}</p>
-            <p>{currentTask && currentTask.status}</p>
-            <p>{currentTask && new Date(currentTask.createdAt).toLocaleString('it-IT', {
-                dateStyle: 'short',
-                timeStyle: 'short'
-            })}</p>
-            <button onClick={() => handleDelete()}>
-                Elimina Task
-            </button>
-            <button onClick={() => setIsOpen(true)}>
-                Elimina Task con la Modale
-            </button>
-            <button onClick={() => setIsEditOpen(true)}>Modifica la tua Task</button>
+            <div className="task-cont">
+                <p>{currentTask && currentTask.description}</p>
+                <p>{currentTask && currentTask.status}</p>
+                <p>{currentTask && new Date(currentTask.createdAt).toLocaleString('it-IT', {
+                    dateStyle: 'short',
+                    timeStyle: 'short'
+                })}</p>
+                <button onClick={() => handleDelete()}>
+                    Elimina Task
+                </button>
+                <button onClick={() => setIsOpen(true)}>
+                    Elimina Task con la Modale
+                </button>
+                <button onClick={() => setIsEditOpen(true)}>Modifica la tua Task</button>
 
-            <Modal
-                show={isOpen}
-                onClose={() => setIsOpen(false)}
-                onConfirm={handleDelete}
-                title="Elimina la task"
-                content="Sei sicuro di voler eliminare questa task? Non potrai più tornare indietro."
-            />
+                <Modal
+                    show={isOpen}
+                    onClose={() => setIsOpen(false)}
+                    onConfirm={handleDelete}
+                    title="Elimina la task"
+                    content="Sei sicuro di voler eliminare questa task? Non potrai più tornare indietro."
+                />
 
-            <EditTaskModal
-                show={isEditOpen}
-                onClose={() => setIsEditOpen(false)}
-                onSave={handleSaveTask}
-                task={currentTask}
-            />
+                <EditTaskModal
+                    show={isEditOpen}
+                    onClose={() => setIsEditOpen(false)}
+                    onSave={handleSaveTask}
+                    task={currentTask}
+                />
+            </div>
 
         </>
 

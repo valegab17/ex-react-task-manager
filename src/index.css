@@ -1,21 +1,167 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Pixelify Sans', sans-serif;
 }
 
+/* STILE DEL BODY */
+body {
+  background-image: url(/public/imgs/Gemini_Generated_Image_o8r6y8o8r6y8o8r6.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
 
 /* STILE DELLA NAVBAR */
-nav a {
-  display: inline-block;
-  margin-right: 15px;    
-  font-size: 1.5rem;
+.navbar {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 90%;
+  max-width: 500px;
+
+  padding: 12px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 15px;
+}
+
+/* TRASFORMO I MIEI NAVLINK IN SIMIL BOTTONI  */
+.navbar a {
+  font-size: 1.3rem;
   text-decoration: none;
-  color: brown;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase; 
+
+  background-color: brown;
+  padding: 12px 20px; 
+  border-radius: 0px; 
+  flex: 1;
+  text-align: center;
+
+  transition: all 0.2s ease;
+  border: 3px solid #5a1e1e; 
 }
 
-nav a:last-child {
-  margin-right: 0;
+/* EFFETTO RETRO HOVER  */
+.navbar a:hover {
+  background-color: #a03a3a; 
+  color: white;             
+  border: 3px solid #5a1e1e;
+}
+
+/* STILE H1 TASKLIST */
+.t-title {
+  color: #fff;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* STILE TASKLIST */
+.table-container {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 800px;
+  height: 50vh;
+  overflow-y: auto;
+  padding: 20px;
+  font-size: 2rem;
+  margin-top: 200px;
+  
 }
 
 
+.task-table {
+  min-width: 300px;
+  width: 100%;
+  text-align: center;
+}
+
+.task-table th {
+  cursor: pointer;
+  margin-bottom: 30px;
+  color: white;
+}
+
+tbody a {
+  color: #fff;
+  text-decoration: none;
+}
+
+tbody {
+  color: #ff8b8b;
+}
+
+/* STILE FORM */
+.t-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  text-align: center;
+  width: 50%;
+  padding: 20px;
+  font-size: 2.5rem;
+  color: #fff;
+}
+
+.t-form input,
+.t-form select,
+.t-form textarea,
+.t-form button {
+  display: block;
+  margin: 15px auto;
+  padding: 12px 20px;       
+  font-size: 1.3rem;       
+  font-family: 'Pixelify Sans', sans-serif; 
+  width: 80%;               
+  max-width: 400px;
+  
+  background-color: #1a243d; 
+  color: white;             
+  border: 3px solid #c28d58; 
+  outline: none;
+}
+
+.t-form textarea {
+  min-height: 100px;
+  resize: none;             
+}
+
+.t-form button {
+  background-color: brown;  
+  border: 3px solid #5a1e1e;
+  cursor: pointer;
+  color: white;
+  text-transform: uppercase;
+}
+
+.t-form button:hover {
+  background-color: #a03a3a;
+}
+
+
+.title-container .t-title {
+  position: fixed;         
+  top: 60px;               
+  left: 51%;               
+  transform: translateX(-50%); 
+  margin-top: 20px;
+  font-size: 2.5rem;
+
+}
+
+/* STILE TASK DETAIL */

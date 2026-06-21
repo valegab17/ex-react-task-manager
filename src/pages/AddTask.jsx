@@ -55,7 +55,9 @@ export default function AddTask() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <>
+        <div className="t-title"> <h1>PURR-FORM</h1> </div>
+        <form onSubmit={handleSubmit} className="t-form">
             <div className="task-title">
 
                 <label> NOME DELLA TUA TASK: </label>
@@ -81,6 +83,8 @@ export default function AddTask() {
             <button type="submit" className="submit-btn">Aggiungi Task</button>
 
         </form>
+        
+        </>
 
     )
 }
