@@ -47,8 +47,8 @@ export default function TaskDetail() {
 
     return (
         <>
-            <h1>{currentTask && currentTask.title}</h1>
-            <div className="task-cont">
+            <h1 className="t-title">{currentTask && currentTask.title}</h1>
+            <div className="t-detail">
                 <p>{currentTask && currentTask.description}</p>
                 <p>{currentTask && currentTask.status}</p>
                 <p>{currentTask && new Date(currentTask.createdAt).toLocaleString('it-IT', {
