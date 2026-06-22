@@ -210,3 +210,18 @@ tbody {
 .t-detail button{
   padding: 15px;
 }
+
+ .table-container input{
+    display: block;
+  margin: 15px auto;
+  padding: 12px 20px;
+  font-size: 1.3rem;
+  font-family: 'Pixelify Sans', sans-serif;
+  width: 80%;
+  max-width: 400px;
+  
+  background-color: #1a243d;
+  color: white;
+  border: 3px solid #c28d58;
+  outline: none;
+ }

@@ -54,11 +54,11 @@ export default function TaskList() {
 
             <div className="t-title"> <h1>MEOW-LIST</h1></div>
             {/*Input di ricerca */}
+            <div className="table-container">
             <input
                 type="text"
                 placeholder="Cerca una task..."
                 onChange={e => debouncedSetSearchQuery(e.target.value)} />
-            <div className="table-container">
                 <table className="task-table">
                     <thead>
                         <tr >
